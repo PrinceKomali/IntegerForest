@@ -13,5 +13,5 @@ The first line is broken into 2 parts:
 42 43 44 45 <...> 70 71 72 73
 ```
 The next part is simply instructions of where to go:
-`^v<>` control where the pointer is on the grid and `;` prints without a newline
+`^v<>` control where the pointer is on the grid and `;` prints whatever char code the number at the pointer is without a newline
 This program immediately goes down to 42, prints (*) 10x, goes up, prints (\n), and repeats 
