@@ -41,15 +41,17 @@ fn run(code: String, sg: bool) {
     for i in 0..x_max * y_max {
         grid[(i/x_max) as usize].push(fn_parse(&mut func, i));
     }
-    let mut x: u32 = 0;
-    let mut y: u32 = 0;
+    let mut x: i32 = 0;
+    let mut y: i32 = 0;
     let mut output = String::new();
     for chr in code[1].chars() {
-        if x<0 { x = x_max as i32 - 1; } //Someone please improve this part
+      
+        if x<0 { x = x_max as i32 - 1; }
         if x<0 { y = y_max as i32 - 1; }
         if x >= x_max as i32 {x = 0; }
         if y >= y_max as i32 {y = 0; }
-        match chr {
+      println!("{}/{} {}/{} {}",x,x_max,y,y_max, chr);
+      match chr {
           '>' => x+=1,
           '<' => x-=1,
           '^' => y-=1,
