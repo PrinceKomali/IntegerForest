@@ -45,13 +45,23 @@ fn run(code: String, sg: bool) {
     let mut y: u32 = 0;
     let mut output = String::new();
     for chr in code[1].chars() {
-        if chr == '>' { x = (x + 1) % x_max; }
-        if chr == '<' { x = (x - 1) % x_max; }
-        if chr == '^' { y = (y - 1) % y_max; }
-        if chr == 'v' { y = (y + 1) % y_max; }
-        if chr == ';' { output.push(std::char::from_u32(
-            grid[(y%y_max) as usize][(x%x_max) as usize] as u32
-        ).unwrap()); }
+        if x<0 { x = x_max as i32 - 1; } //Someone please improve this part
+        if x<0 { y = y_max as i32 - 1; }
+        if x >= x_max as i32 {x = 0; }
+        if y >= y_max as i32 {y = 0; }
+        match chr {
+          '>' => x+=1,
+          '<' => x-=1,
+          '^' => y-=1,
+          'v' => y+=1,
+          ';' => output.push(std::char::from_u32(
+            grid[y as usize][x as usize] as u32
+        ).unwrap()),
+        _=>{
+            println!("Error: Invalid character in expression: \x1b[32m{}\x1b[0m", chr);
+            std::process::exit(1)
+        }
+        }
     }
     if sg { 
         for i in grid {
