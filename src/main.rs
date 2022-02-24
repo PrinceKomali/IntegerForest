@@ -50,8 +50,7 @@ fn run(code: String, sg: bool) {
         if x<0 { y = y_max as i32 - 1; }
         if x >= x_max as i32 {x = 0; }
         if y >= y_max as i32 {y = 0; }
-      println!("{}/{} {}/{} {}",x,x_max,y,y_max, chr);
-      match chr {
+        match chr {
           '>' => x+=1,
           '<' => x-=1,
           '^' => y-=1,
